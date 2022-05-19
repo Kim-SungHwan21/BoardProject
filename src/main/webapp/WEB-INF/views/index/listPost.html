@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>목록</title>
+</head>
+<body>
+<br>
+<table>
+    <th>
+    <td>게시글번호</td>
+    <td>작성자</td>
+    <td>제목</td>
+    <td>내용</td>
+    <td>작성시간</td>
+    </th>
+    <c:forEach var="list" items="${postDataLoad.getPosts()}">
+        <tr>
+            <td>${list.getId()}</td>
+            <td>${list.getWriterUserId()}</td>
+            <td>${list.getTitle()}</td>
+            <td>${list.getContent()}</td>
+            <td>${list.getWriteTime()} </td>
+        </tr>
+    </c:forEach>
+</table>
+<br />
+
+<a href="postPage.html">게시판메뉴페이지</a>
+</body>
+</html>

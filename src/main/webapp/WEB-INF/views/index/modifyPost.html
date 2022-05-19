@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<div class="container">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="jumbotron" style="padding-top: 20px;">
+            <form method="post" action="/registerPost">
+                <h3 style="text-align: center;">
+                    게시글 수정 화면
+                </h3>
+                <div class="form-group">
+                    게시글번호 : ${postDataLoad.getPosts().size() +1}
+                </div>
+                <div class="form-group">
+                    작성자 : ${id}
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="제목" name="title" maxlenth="20">
+                </div>
+                <div class="form-group">
+                    <textarea rows="10" cols="30" name="content"></textarea>
+                </div>
+                <div class="form-group">
+                    작성시간 ${postDataLoad.getWriteTime()}
+                </div>
+                <input type="submit" class="btn btn-primary form-control"게시글등록>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div><a href="postPage.html">게시판메뉴페이지</a>
+</body>
+</html>
