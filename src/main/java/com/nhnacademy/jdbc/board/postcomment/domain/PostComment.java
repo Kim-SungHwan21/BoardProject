@@ -4,7 +4,7 @@ import java.util.Date;
 import lombok.Getter;
 
 @Getter
-public class postComment {
+public class PostComment {
     private int postCommentNo;
     private int parentsCommentNo;
     private int memNo;
@@ -14,7 +14,7 @@ public class postComment {
     private String postCommentContext;
     private Date postCommentRegisterDatetime;
 
-    public postComment(int postCommentNo, int parentsCommentNo, int memNo, int boardNo,
+    public PostComment(int postCommentNo, int parentsCommentNo, int memNo, int boardNo,
                        int postCommentDepth, String postCommentLevelNo,
                        String postCommentContext, Date postCommentRegisterDatetime) {
         this.postCommentNo = postCommentNo;

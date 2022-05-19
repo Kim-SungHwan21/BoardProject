@@ -1,14 +1,14 @@
-package com.nhnacademy.jdbc.board.login.domain;
+package com.nhnacademy.jdbc.board.member.domain;
 
 import lombok.Getter;
 
 @Getter
-public class Mem {
+public class Member {
     private int memNo;
     private String memId;
     private String memPassword;
 
-    public Mem(int memNo, String memId, String memPassword) {
+    public Member(int memNo, String memId, String memPassword) {
         this.memNo = memNo;
         this.memId = memId;
         this.memPassword = memPassword;

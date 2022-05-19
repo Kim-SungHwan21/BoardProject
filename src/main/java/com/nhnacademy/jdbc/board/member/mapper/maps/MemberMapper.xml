@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nhnacademy.jdbc.board.member.mapper.MemberMapper">
+    <select id="selectMember" resultType="com.nhnacademy.jdbc.board.member.domain.Member">
+        select *
+        from mem
+        where memId = #{memId}
+    </select>
+
+    <select id="selectMembers" resultType="com.nhnacademy.jdbc.board.member.domain.Member">
+        select *
+        from mem
+    </select>
+
+    <insert id="insertMember">
+        insert into mem(memNo, memId, memPassword)
+        values (#{memNo}, #{memId}, '${memPassword}')
+    </insert>
+
+    <update id="updatePasswordById">
+        update mem set memPassword= #{memPassword}
+        where memId = #{memId}
+    </update>
+
+    <delete id="deleteById">
+        delete from mem where memId=#{memId}
+    </delete>
+</mapper>
