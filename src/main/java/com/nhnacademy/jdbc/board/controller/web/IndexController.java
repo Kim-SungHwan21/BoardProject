@@ -1,4 +1,4 @@
-package com.nhnacademy.jdbc.board.index.web;
+package com.nhnacademy.jdbc.board.controller.web;
 
 import com.nhnacademy.jdbc.board.student.domain.Student;
 import com.nhnacademy.jdbc.board.student.service.StudentService;
@@ -14,18 +14,10 @@ import java.util.Optional;
 @RequestMapping
 @Slf4j
 public class IndexController {
-    private final StudentService studentService;
-
-    public IndexController(DefaultStudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @GetMapping(value = {"/","/index.nhn"})
     public String index(){
-        Optional<Student> student = studentService.getStudent(1l);
-        if(student.isPresent()){
-            log.debug("student : {}",student.get());
-        }
-        return "index/loginForm";
+
+        return "index/index";
     }
 }
