@@ -5,4 +5,5 @@ import java.util.Optional;
 
 public interface MemberLoginService {
     Optional<Member> getMember(int id);
+    boolean matches(String memId, String password)
 }

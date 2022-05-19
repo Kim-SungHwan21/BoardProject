@@ -20,7 +20,7 @@ public class LoginController {
 
     @GetMapping(value = {"/login"})
     public String login() {
-        Optional<Member> member = memberLoginService.getMember(1);
+        Optional<Member> member = memberLoginService.getMember(1); // TODO :
         if(member.isPresent()) {
             log.debug("member : {}", member.get());
         }

@@ -20,4 +20,9 @@ public class DefaultMemberLoginService implements MemberLoginService {
     public Optional<Member> getMember(int id) {
         return memberMapper.selectMember(id);
     }
+
+    @Override
+    public boolean matches(String memId, String password) {
+        return false;
+    }
 }

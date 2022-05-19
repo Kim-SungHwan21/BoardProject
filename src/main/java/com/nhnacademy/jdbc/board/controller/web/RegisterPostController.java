@@ -4,25 +4,20 @@ import com.nhnacademy.jdbc.board.post.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/modifyPost")
+@RequestMapping("/registerPost")
 @Slf4j
-public class ModifyPostController {
-
+public class RegisterPostController {
     private final PostService postService;
 
-    public ModifyPostController(PostService postService) {
+    public RegisterPostController(PostService postService) {
         this.postService = postService;
     }
 
-    @GetMapping()
-    public String modifyPostForm() {
-        return "index/modifyPost";
+    @GetMapping
+    public String registerPost() {
+        return  "index/registerPost";
     }
-
-    @PostMapping()
-    public String modifyPost() {} // TODO : 게시글 수정 Post
 }
