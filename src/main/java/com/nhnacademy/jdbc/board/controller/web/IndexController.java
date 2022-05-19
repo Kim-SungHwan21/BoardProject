@@ -15,7 +15,7 @@ import java.util.Optional;
 @Slf4j
 public class IndexController {
 
-    @GetMapping(value = {"/","/index.nhn"})
+    @GetMapping(value = {"/","/index"})
     public String index(){
 
         return "index/index";
