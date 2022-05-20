@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org"/>
 <html>
 <head>
     <title>목록</title>
@@ -6,6 +7,7 @@
 <body>
 <table>
     <thead>
+<!--    <a th:href="${'/updateTitle/' + contents.id}"> 게시물 수정</a><br>--> div용
     <tr>
         <th>게시글번호</th>
         <th>작성자</th>
@@ -17,8 +19,11 @@
     <tr th:each="post : ${posts}">
         <td th:text="${post.boardNo}"/>
         <td th:text="${post.memNo}"/>
-        <td th:text="${post.BoardTitle}"><a href="/contextPost"></a></td>
-<!--        <a th:href="@{|/postModify/${post.postNum|}", th:if="${isWriter || isAdmin}"-->
+<!--        <td th:text="${post.BoardTitle}"><a href="/contextPost"></a></td>-->
+<!--        <td><a th:href="@{/modifyComment/${comment.id}"> </a></td>-->
+        <td><a th:href="@{/contextPost}"> <span th:text="${post.BoardTitle}"></span></a></td>
+
+        <a th:href="@{|/postModify/${post.postNum|}"
         <td th:text="${post.BoardRegisterDatetime}"/>
     </tr>
     </tbody>
