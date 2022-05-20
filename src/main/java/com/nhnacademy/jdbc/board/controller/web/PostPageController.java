@@ -19,7 +19,29 @@ public class PostPageController {
 
     @GetMapping(value = {"/postPage"})
     public String postPage() {
+
         return "index/postPage";
     }
+
+    @GetMapping("/removePost")
+    public String removePost() {
+        return "index/removePost";
+    }
+
+    @GetMapping("/registerPost")
+    public String registerPost() {
+        return  "index/registerPost";
+    }
+
+    @GetMapping("/modifyPost")
+    public String modifyPostForm() {
+        return "index/modifyPost";
+    }
+
+    @GetMapping(value = "/infoPost")
+    public String infoPost() {
+        return "index/infoPost";
+    }
+
 
 }

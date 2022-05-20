@@ -18,10 +18,6 @@ public class ModifyPostController {
         this.postService = postService;
     }
 
-    @GetMapping()
-    public String modifyPostForm() {
-        return "index/modifyPost";
-    }
 
 //    @PostMapping()
 //    public String modifyPost() {} // TODO : 게시글 수정 Post

@@ -16,8 +16,4 @@ public class RegisterPostController {
         this.postService = postService;
     }
 
-    @GetMapping
-    public String registerPost() {
-        return  "index/registerPost";
-    }
 }

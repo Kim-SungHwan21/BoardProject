@@ -17,7 +17,7 @@
 
     <insert id="insertMember">
         insert into mem(memNo, memId, memPassword)
-        values (#{memNo}, #{memId}, '${memPassword}')
+        values (#{memNo}, #{memId}, #{memPassword})
     </insert>
 
 </mapper>

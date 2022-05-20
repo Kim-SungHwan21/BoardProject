@@ -15,18 +15,18 @@
         from board
     </select>
 
-    <insert id="insertPost">
+    <insert id="registerPost">
         insert into board(boardNo, parentsBoardNo, memNo, boardDepth, boardLevelNo, boardTitle,
                           boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
                           boardViewCount, boardDeleteCheck)
-        values (#{boardNo}, #{parentsBoardNo}, #{memNo}, #{boardDepth}, '${boardLevelNo}', '${boardTitle}',
-                '${boardContext}', #{boardRegisterDateTime}, #{boardModifyDateTime}, #{boardCommentCount},
+        values (#{boardNo}, #{parentsBoardNo}, #{memNo}, #{boardDepth}, #{boardLevelNo}, #{boardTitle},
+                #{boardContext}, #{boardRegisterDateTime}, #{boardModifyDateTime}, #{boardCommentCount},
                 #{boardViewCount}, #{boardDeleteCheck})
     </insert>
 
     <update id="updateContextByNo">
-        update board set boardContext= '${boardContext}', boardTitle = '${boardTitle}'
-        where memNo = #{memNo} and boardRegisterDateTime = #{boardRegisterDateTime} and boardTitle = '${boardTitle}'
+        update board set boardContext= #{boardContext}, boardTitle = #{boardTitle}
+        where memNo = #{memNo} and boardRegisterDateTime = #{boardRegisterDateTime} and boardTitle = #{boardTitle}
     </update>
 
     <delete id="deleteByNo">

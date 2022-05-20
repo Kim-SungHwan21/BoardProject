@@ -15,16 +15,16 @@
     </th>
     <c:forEach var="list" items="${postDataLoad.getPosts()}">
         <tr>
-            <td>${list.getId()}</td>
-            <td>${list.getWriterUserId()}</td>
-            <td><a href="ContextPost"/> ${list.getTitle()}</td>
-            <td>${list.getContent()}</td>
-            <td>${list.getWriteTime()} </td>
+            <td><span th:text="${list.getId()}"/></td>
+            <td><span th:text="${list.getWriterUserId()}"/></td>
+            <td><span th:text="${list.getTitle()}"/></td>
+            <td><span th:text="${list.getContent()}"/></td>
+            <td><span th:text="${list.getWriteTime()}"/></td>
         </tr>
     </c:forEach>
 </table>
 <br />
 
-<a href="postPage.html">게시판메뉴페이지</a>
+<a href="postPage">게시판메뉴페이지</a>
 </body>
 </html>

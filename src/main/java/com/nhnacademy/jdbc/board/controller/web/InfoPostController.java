@@ -18,9 +18,6 @@ public class InfoPostController {
         this.postService = postService;
     }
 
-    @GetMapping(value = "/infoPost")
-    public String infoPost() {
-        return "index/infoPost";
-    }
+
 
 }

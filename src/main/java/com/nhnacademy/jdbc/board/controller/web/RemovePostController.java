@@ -15,9 +15,4 @@ public class RemovePostController {
     public RemovePostController(PostService postService) {
         this.postService = postService;
     }
-
-    @GetMapping
-    public String removePost() {
-        return "index/removePost";
-    }
 }
