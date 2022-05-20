@@ -4,6 +4,7 @@ import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.member.mapper.MemberMapper;
 import com.nhnacademy.jdbc.board.member.service.MemberLoginService;
 import com.nhnacademy.jdbc.board.post.domain.Post;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ public class DefaultMemberLoginService implements MemberLoginService {
     @Override
     public Optional<Member> getMember(String memId) {
         return memberMapper.selectMember(memId);
+    }
+
+    @Override
+    public List<Member> getMembers() {
+        return memberMapper.selectMembers();
     }
 
     @Override

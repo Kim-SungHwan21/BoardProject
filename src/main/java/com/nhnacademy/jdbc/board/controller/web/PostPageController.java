@@ -29,14 +29,24 @@ public class PostPageController {
     }
 
 
-    @PostMapping(value = {"/contextPost"})
-    public String contextPost(HttpServletRequest request,
-                              @RequestParam("boardNo") int boardNo,
-                              @RequestParam("memId") String memId) {
-        Optional<Post> post = postService.getPost(boardNo);
-        request.setAttribute("post", post.get());
-        Optional<Member> member = memberLoginService.getMember(memId);
-        request.setAttribute("member", member.get());
+//    @GetMapping(value = {"/contextPost"})
+//    public String contextPost(HttpServletRequest request,
+//                              @RequestParam("boardNo") int boardNo,
+//                              @RequestParam("memId") String memId) {
+//        Optional<Post> post = postService.getPost(boardNo);
+//        request.setAttribute("post", post.get());
+//        Optional<Member> member = memberLoginService.getMember(memId);
+//        request.setAttribute("member", member.get());
+//        return "index/contextPost";
+//    }
+
+    @GetMapping(value = {"/contextPost"})
+    public String contextPost(Model model) {
+        List<Post> posts = postService.getPosts();
+        model.addAttribute("posts", posts);
+        List<Member> members = memberLoginService.getMembers();
+        model.addAttribute("members", members);
+
         return "index/contextPost";
     }
 
