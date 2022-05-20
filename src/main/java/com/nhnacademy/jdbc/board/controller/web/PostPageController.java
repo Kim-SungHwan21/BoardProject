@@ -1,39 +1,46 @@
 package com.nhnacademy.jdbc.board.controller.web;
 
+import com.nhnacademy.jdbc.board.member.domain.Member;
+import com.nhnacademy.jdbc.board.member.service.MemberLoginService;
 import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.post.service.PostService;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping
 @Slf4j
 public class PostPageController {
     private final PostService postService;
+    private final MemberLoginService memberLoginService;
 
-    public PostPageController(PostService postService) {
+    public PostPageController(PostService postService,
+                              MemberLoginService memberLoginService) {
         this.postService = postService;
+        this.memberLoginService = memberLoginService;
     }
 
-    @GetMapping(value = {"/contextPost"})
-    public String postPage(HttpServletRequest request) {
-        Optional<Post> post = postService.getPost(1);
+
+    @PostMapping(value = {"/contextPost"})
+    public String contextPost(HttpServletRequest request,
+                              @RequestParam("boardNo") int boardNo,
+                              @RequestParam("memId") String memId) {
+        Optional<Post> post = postService.getPost(boardNo);
         request.setAttribute("post", post.get());
+        Optional<Member> member = memberLoginService.getMember(memId);
+        request.setAttribute("member", member.get());
         return "index/contextPost";
     }
 
-    @PostMapping("/infoPost")
+    @PostMapping("/listPost")
     public String infoPost() {
-
-        if()
-
-        return "/infoPost";
+        return "/listPost";
     }
 
     @PostMapping("/modifyPost")
@@ -56,8 +63,13 @@ public class PostPageController {
         return "index/modifyPost";
     }
 
-    @GetMapping(value = "/infoPost")
+    @GetMapping(value = "/listPost")
     public String infoPostForm() {
-        return "index/infoPost";
+        return "index/listPost";
+    }
+
+    @GetMapping(value = "/postPage")
+    public String postPage() {
+        return "index/postPage";
     }
 }
