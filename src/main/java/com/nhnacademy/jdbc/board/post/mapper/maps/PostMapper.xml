@@ -32,4 +32,9 @@
     <delete id="deleteByNo">
         delete from board where boardNo=#{boardNo}
     </delete>
+
+    <select id="selectPostWriter" resultType="com.nhnacademy.jdbc.board.post.domain.Post">
+        select M.memId from board B inner join mem M on B.memNo = M.memNo
+        where M.memId = ${memId}
+    </select>
 </mapper>
