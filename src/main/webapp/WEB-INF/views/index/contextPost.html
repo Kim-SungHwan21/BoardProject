@@ -5,13 +5,11 @@
 </head>
 <body>
 <br>
-    <br>
-        <span>게시글번호</span> <span th:text="${post.boardNo()}"/>
-        <span>작성자</span> <span th:text="${member.getMemId()}"/>
-        <span>제목</span> <span th:text="${post.}"/>
-        <span>작성시간</span> <span th:text="${post.}"/>
-        <span>내용</span> <br> <span th:text="${post.}"/>
-    </br>
+<span>게시글번호</span> <span th:text="${post.boardNo}"/>
+<span>작성자</span> <span th:text="${member.MemId}"/>
+<span>제목</span> <span th:text="${post.BoardTitle}"/>
+<span>작성시간</span> <span th:text="${post.BoardRegisterDatetime}"/>
+<span>내용</span> <br> <span th:text="${post.BoardContext}"/>
 <br />
 
 <a href="postPage">게시판메뉴페이지</a>

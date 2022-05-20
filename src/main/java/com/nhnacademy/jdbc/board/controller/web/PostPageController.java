@@ -4,6 +4,7 @@ import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.member.service.MemberLoginService;
 import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.post.service.PostService;
+import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +40,12 @@ public class PostPageController {
         return "index/contextPost";
     }
 
-    @PostMapping("/listPost")
-    public String infoPost() {
-        return "/listPost";
+    @GetMapping(value = "/listPost")
+    public String listPostForm(Model model) {
+        List<Post> posts = postService.getPosts();
+        model.addAttribute("posts", posts);
+
+        return "index/listPost";
     }
 
     @PostMapping("/modifyPost")
@@ -62,14 +66,6 @@ public class PostPageController {
     @GetMapping("/modifyPost")
     public String modifyPostForm() {
         return "index/modifyPost";
-    }
-
-    @GetMapping(value = "/listPost")
-    public String listPostForm(Model model) {
-        Optional<Post> post = postService.getPost();
-        model.addAttribute("post",post);
-
-        return "index/listPost";
     }
 
     @GetMapping(value = "/postPage")
