@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="'http://thymeleaf.org"/>
-<html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <title>목록</title>
 </head>
@@ -19,12 +18,12 @@
     <tr th:each="post : ${posts}">
         <td th:text="${post.boardNo}"/>
         <td th:text="${post.memNo}"/>
-<!--        <td th:text="${post.BoardTitle}"><a href="/contextPost"></a></td>-->
-<!--        <td><a th:href="@{/modifyComment/${comment.id}"> </a></td>-->
         <td><a th:href="@{/contextPost}"> <span th:text="${post.BoardTitle}"></span></a></td>
-
-<!--        <a th:href="@{|/postModify/${post.postNum|}"-->
         <td th:text="${post.BoardRegisterDatetime}"/>
+
+        <!--        <td th:text="${post.BoardTitle}"><a href="/contextPost"></a></td>-->
+        <!--        <td><a th:href="@{/modifyComment/${comment.id}"> </a></td>-->
+        <!--        <a th:href="@{|/postModify/${post.postNum|}"-->
     </tr>
     </tbody>
 </table>
