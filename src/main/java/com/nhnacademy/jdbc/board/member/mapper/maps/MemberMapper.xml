@@ -20,12 +20,4 @@
         values (#{memNo}, #{memId}, '${memPassword}')
     </insert>
 
-    <update id="updatePasswordById">
-        update mem set memPassword= #{memPassword}
-        where memId = #{memId}
-    </update>
-
-    <delete id="deleteById">
-        delete from mem where memId=#{memId}
-    </delete>
 </mapper>

@@ -23,6 +23,6 @@ public class ModifyPostController {
         return "index/modifyPost";
     }
 
-    @PostMapping()
-    public String modifyPost() {} // TODO : 게시글 수정 Post
+//    @PostMapping()
+//    public String modifyPost() {} // TODO : 게시글 수정 Post
 }

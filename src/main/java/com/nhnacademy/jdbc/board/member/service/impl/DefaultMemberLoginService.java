@@ -17,12 +17,16 @@ public class DefaultMemberLoginService implements MemberLoginService {
 
 
     @Override
-    public Optional<Member> getMember(int id) {
-        return memberMapper.selectMember(id);
+    public boolean isLogin(String memId, String password) {
+        Optional<Member> member = memberMapper.selectMember(memId);
+        System.out.println("member : "+ member);
+
+        if (member.get().getMemId().equals(memId) && member.get().getMemPassword().equals(password)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    @Override
-    public boolean matches(String memId, String password) {
-        return false;
-    }
 }

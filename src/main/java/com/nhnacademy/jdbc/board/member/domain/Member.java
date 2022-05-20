@@ -1,18 +1,19 @@
 package com.nhnacademy.jdbc.board.member.domain;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+
+@Data
 public class Member {
     private int memNo;
     private String memId;
     private String memPassword;
 
-    public Member(int memNo, String memId, String memPassword) {
-        this.memNo = memNo;
-        this.memId = memId;
-        this.memPassword = memPassword;
-    }
+//    public Member(int memNo, String memId, String memPassword) {
+//        this.memNo = memNo;
+//        this.memId = memId;
+//        this.memPassword = memPassword;
+//    }
 
     @Override
     public String toString() {
@@ -22,4 +23,5 @@ public class Member {
             ", memPassword='" + memPassword + '\'' +
             '}';
     }
+
 }
