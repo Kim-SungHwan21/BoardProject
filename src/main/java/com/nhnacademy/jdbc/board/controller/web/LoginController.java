@@ -26,10 +26,6 @@ public class LoginController {
 
     @GetMapping(value = {"/login"})
     public String login() {
-//        Optional<Member> member = memberLoginService.getMember(1);
-//        if(member.isPresent()) {
-//            log.debug("member : {}", member.get());
-//        }
         return "index/loginForm";
     }
 
@@ -49,11 +45,5 @@ public class LoginController {
         } else {
             return "index/longinForm";
         }
-//
-//        if(memberLoginService.matches(memId, password)) {
-//            return "index/loginSuccess";
-//        } else {
-//            return "index/longinForm";
-//        }
     }
 }

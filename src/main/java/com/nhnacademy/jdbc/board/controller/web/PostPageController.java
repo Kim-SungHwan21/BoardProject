@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping
@@ -19,17 +20,31 @@ public class PostPageController {
 
     @GetMapping(value = {"/postPage"})
     public String postPage() {
-
         return "index/postPage";
     }
 
+    @PostMapping("/infoPost")
+    public String infoPost() {
+
+        if()
+
+        return "/infoPost";
+    }
+
+    @PostMapping("/modifyPost")
+    public String modifyPost() {
+        return "/";
+    }
+
+
+
     @GetMapping("/removePost")
-    public String removePost() {
+    public String removePostForm() {
         return "index/removePost";
     }
 
     @GetMapping("/registerPost")
-    public String registerPost() {
+    public String registerPostForm() {
         return  "index/registerPost";
     }
 
@@ -39,9 +54,11 @@ public class PostPageController {
     }
 
     @GetMapping(value = "/infoPost")
-    public String infoPost() {
+    public String infoPostForm() {
         return "index/infoPost";
     }
+
+
 
 
 }
