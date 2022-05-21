@@ -78,7 +78,6 @@ public class PostPageController {
             new Date(), null, 0, 0, false);
 
         return "index/postPage";
-
     }
 
 

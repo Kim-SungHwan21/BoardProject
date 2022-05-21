@@ -5,6 +5,7 @@ import com.nhnacademy.jdbc.board.postcomment.domain.PostComment;
 import com.nhnacademy.jdbc.board.postcomment.service.CommentService;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,6 @@ public class PostCommentController {
         commentService.registerComment(size, null, member.getMemNo(),
             boardNo, 1, String.valueOf(size), postCommentText, new Date());
 
-        return "index/contextPost";
+        return "index/postPage";
     }
 }

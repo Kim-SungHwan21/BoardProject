@@ -9,7 +9,7 @@ import java.util.Optional;
 import org.apache.ibatis.annotations.Param;
 
 public interface CommentMapper {
-    void registerComment(@Param("postCommentNo") int postCommentNo, @Param("parentsCommentNo") int parentsCommentNo,
+    void registerComment(@Param("postCommentNo") int postCommentNo, @Param("parentsCommentNo") Integer parentsCommentNo,
                          @Param("memNo") int memNo, @Param("boardNo") int boardNo,
                          @Param("postCommentDepth") int postCommentDepth, @Param("postCommentLevelNo") String postCommentLevelNo,
                          @Param("postCommentContext") String postCommentContext, @Param("postCommentRegisterDatetime") Date postCommentRegisterDatetime);
