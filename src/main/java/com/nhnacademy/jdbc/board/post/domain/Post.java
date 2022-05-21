@@ -21,6 +21,7 @@ public class Post {
     private int boardCommentCount;
     private int boardViewCount;
     private boolean boardDeleteCheck;
+    private String memId;
 
 //    public Post(int boardNo,
 //                int parentsBoardNo,

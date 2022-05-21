@@ -11,8 +11,11 @@
     </select>
 
     <select id="selectPosts" resultType="com.nhnacademy.jdbc.board.post.domain.Post">
-        select *
-        from board
+        select boardNo, parentsBoardNo, B.memNo, boardDepth, boardLevelNo, boardTitle,
+               boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
+               boardViewCount, boardDeleteCheck, M.memId
+        from board B
+        inner join mem M on B.memNo = M.memNo
     </select>
 
     <insert id="registerPost">
@@ -33,8 +36,12 @@
         delete from board where boardNo=#{boardNo}
     </delete>
 
-<!--    <select id="selectPostWriter" resultType="com.nhnacademy.jdbc.board.post.domain.Post">-->
+    <select id="selectPostWriter" resultType="com.nhnacademy.jdbc.board.member.domain.Member">
+        select M.memId from board B inner join mem M on B.memNo = M.memNo
+        where B.boardNo = ${boardNo}
+    </select>
+
+<!--    <select id="selectPostWriters" resultType="com.nhnacademy.jdbc.board.member.domain.Member">-->
 <!--        select M.memId from board B inner join mem M on B.memNo = M.memNo-->
-<!--        where M.memId = ${memId}-->
 <!--    </select>-->
 </mapper>

@@ -1,5 +1,6 @@
 package com.nhnacademy.jdbc.board.post.service.impl;
 
+import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.post.mapper.PostMapper;
 import com.nhnacademy.jdbc.board.post.service.PostService;
@@ -41,4 +42,10 @@ public class DefaultPostService implements PostService {
     public void deletePost(int boardNo) {
         postMapper.deleteByNo(boardNo);
     }
+
+    @Override
+    public Optional<Member> getPostWriter(int boardNo) {
+        return postMapper.selectPostWriter(boardNo);
+    }
+
 }

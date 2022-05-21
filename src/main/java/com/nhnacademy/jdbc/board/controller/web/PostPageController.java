@@ -21,12 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class PostPageController {
     private final PostService postService;
-    private final MemberLoginService memberLoginService;
 
-    public PostPageController(PostService postService,
-                              MemberLoginService memberLoginService) {
+    public PostPageController(PostService postService) {
         this.postService = postService;
-        this.memberLoginService = memberLoginService;
     }
 
 
@@ -46,6 +43,8 @@ public class PostPageController {
 //        List<Post> posts = postService.getPosts();
         Post post = postService.getPost(boardNo).get();
         model.addAttribute("post", post);
+        Member member = postService.getPostWriter(boardNo).get();
+        model.addAttribute("member", member);
 //        List<Member> members = memberLoginService.getMembers();
 
 //        model.addAttribute("members", members);
@@ -57,7 +56,6 @@ public class PostPageController {
     public String listPostForm(Model model) {
         List<Post> posts = postService.getPosts();
         model.addAttribute("posts", posts);
-
         return "index/listPost";
     }
 
