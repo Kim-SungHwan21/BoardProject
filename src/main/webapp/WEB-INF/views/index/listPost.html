@@ -6,7 +6,6 @@
 <body>
 <table>
     <thead>
-<!--    <a th:href="${'/updateTitle/' + contents.id}"> 게시물 수정</a><br>--> div용
     <tr>
         <th>게시글번호</th>
         <th>작성자</th>
@@ -29,6 +28,6 @@
     </tbody>
 </table>
 
-<a href="postPage">게시판메뉴페이지</a>
+<a th:href="@{|/postPage|}">게시판메뉴페이지</a>
 </body>
 </html>

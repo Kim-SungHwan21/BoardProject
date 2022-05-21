@@ -41,6 +41,7 @@ public class DefaultPostService implements PostService {
 
     @Override
     public void deletePost(int boardNo) {
+
         postMapper.deleteByNo(boardNo);
     }
 
