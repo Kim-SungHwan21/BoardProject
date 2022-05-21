@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,12 +41,14 @@ public class PostPageController {
 //        return "index/contextPost";
 //    }
 
-    @GetMapping(value = {"/contextPost"})
-    public String contextPost(Model model) {
-        List<Post> posts = postService.getPosts();
-        model.addAttribute("posts", posts);
-        List<Member> members = memberLoginService.getMembers();
-        model.addAttribute("members", members);
+    @GetMapping(value = {"/contextPost/{boardNo}"})
+    public String contextPost(Model model, @PathVariable int boardNo) {
+//        List<Post> posts = postService.getPosts();
+        Post post = postService.getPost(boardNo).get();
+        model.addAttribute("post", post);
+//        List<Member> members = memberLoginService.getMembers();
+
+//        model.addAttribute("members", members);
 
         return "index/contextPost";
     }

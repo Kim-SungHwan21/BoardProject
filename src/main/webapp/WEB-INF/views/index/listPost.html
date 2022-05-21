@@ -18,7 +18,7 @@
     <tr th:each="post : ${posts}">
         <td th:text="${post.boardNo}"/>
         <td th:text="${post.memNo}"/>
-        <td><a th:href="@{/contextPost}"> <span th:text="${post.BoardTitle}"></span></a></td>
+        <td><a th:href="@{|/contextPost/${post.boardNo}|}"> <span th:text="${post.BoardTitle}"></span></a></td>
 <!--        <td><a th:href="@{|/modifyComment/${comment.commentNo}|}"> 댓글 수정 </a><br></td> 아영님 코드 추가-->
         <td th:text="${post.BoardRegisterDatetime}"/>
 
