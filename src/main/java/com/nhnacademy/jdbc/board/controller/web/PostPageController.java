@@ -71,7 +71,7 @@ public class PostPageController {
             1, String.valueOf(boardNo), boardTitle, boardContext,
             new Date(), null, 0, 0, false);
 
-        return "index/registerPost";
+        return "index/postPage";
 
     }
 

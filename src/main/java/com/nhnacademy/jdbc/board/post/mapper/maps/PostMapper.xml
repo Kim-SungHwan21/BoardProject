@@ -25,9 +25,8 @@
         insert into board(boardNo, parentsBoardNo, memNo, boardDepth, boardLevelNo, boardTitle,
                           boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
                           boardViewCount, boardDeleteCheck)
-        values (#{boardNo}, #{parentsBoardNo}, #{memNo}, #{boardDepth}, '#{boardLevelNo}', '#{boardTitle}',
-                '#{boardContext}', now(), null, #{boardCommentCount},
-                #{boardViewCount}, #{boardDeleteCheck})
+        values (#{boardNo}, #{parentsBoardNo}, #{memNo}, #{boardDepth}, #{boardLevelNo}, #{boardTitle},
+                #{boardContext}, now(), now(), #{boardCommentCount}, #{boardViewCount}, #{boardDeleteCheck})
     </insert>
 
     <update id="updateContextByNo">
