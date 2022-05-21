@@ -107,4 +107,10 @@ public class PostPageController {
     public String postPage() {
         return "index/postPage";
     }
+
+    @GetMapping(value = "/registerComment")
+    public String registerComment() {
+        return "index/contextPost/{boardNo}";
+    }
+
 }

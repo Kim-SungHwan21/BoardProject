@@ -15,7 +15,33 @@
 <span>내용</span> <br> <p th:text="${post.boardContext}"></p>
 <td><a th:href="@{|/modifyPost/${post.boardNo}|}"> 수정</a></td>
 <td><a th:href="@{|/removePost/${post.boardNo}|}"> 삭제</a></td>
+<td><a th:href="@{|/registerComment/${comment.postCommentNo}|}"> 댓글등록</a></td>
 <br />
+<table>
+    <thead>
+    <tr>
+        <th>댓글번호</th>
+        <th>작성자</th>
+        <th>댓글내용</th>
+        <th>작성시간</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.boardNo}"/>
+        <td th:text="${post.memId}"/>
+        <td><a th:href="@{|/contextPost/${post.boardNo}|}"> <span th:text="${post.BoardTitle}"></span></a></td>
+        <td th:text="${post.BoardRegisterDatetime}"/>
+        <td><a th:href="@{|/modifyComment/${comment.postCommentNo}|}"> 댓글 수정 </a><br></td>
+        <td><a th:href="@{|/removeComment/${comment.postCommentNo}|}"> 댓글 삭제 </a><br></td>
+        <!--        <td th:text="${post.BoardTitle}"><a href="/contextPost"></a></td>-->
+        <!--        <td><a th:href="@{/modifyComment/${comment.id}"> </a></td>-->
+        <!--        <a th:href="@{|/postModify/${post.postNum|}"-->
+    </tr>
+    </tbody>
+
+</table>
+
 
 <a th:href="@{|/postPage|}">게시판메뉴페이지</a>
 
