@@ -9,8 +9,6 @@ N
 src/main/resources/logback.xml,7\0\7097ec3a5185ee6ac4acfdc815ac0ecc28af4a67
 ]
 -src/main/webapp/WEB-INF/views/index/error.jsp,9\e\9e5e67c9f0f744c15821bb0930a2c3476f1689e5
-e
-5src/main/webapp/WEB-INF/views/index/registerPost.html,c\5\c5a9a348b6dfaaaea5cede314767631d79416993
 c
 3src/main/webapp/WEB-INF/views/index/removePost.html,2\b\2bad1cb180ff37884d70f63c20ebe6aaa75f7a09
 a

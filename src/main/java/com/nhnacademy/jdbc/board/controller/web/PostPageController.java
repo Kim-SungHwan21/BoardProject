@@ -4,6 +4,7 @@ import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.member.service.MemberLoginService;
 import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.post.service.PostService;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +51,30 @@ public class PostPageController {
 //        model.addAttribute("members", members);
 
         return "index/contextPost";
+    }
+
+    @PostMapping(value = "/registerPost")
+    public String registerPost(Post post,
+                               @RequestParam("boardNo") int boardNo,
+                               @RequestParam("parentsBoardNo") int parentsBoardNo,
+                               @RequestParam("memNo") int memNo,
+                               @RequestParam("boardDepth") int boardDepth,
+                               @RequestParam("boardLevelNo") String boardLevelNo,
+                               @RequestParam("boardTitle") String boardTitle,
+                               @RequestParam("boardContext") String boardContext,
+                               @RequestParam("boardRegisterDateTime") Date boardRegisterDateTime,
+                               @RequestParam("boardModifyDateTime") Date boardModifyDateTime,
+                               @RequestParam("boardCommentCount") int boardCommentCount,
+                               @RequestParam("boardViewCount") int boardViewCount,
+                               @RequestParam("boardDeleteCheck") boolean boardDeleteCheck,
+                               @RequestParam("memId") String memId) {
+
+        Post post = new Post(boardNo, parentsBoardNo, memNo, boardDepth, boardLevelNo, boardTitle,
+            boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
+            boardViewCount, boardDeleteCheck, memId);
+
+        postService.registerPost(post);
+        return "index/registerPost";
     }
 
     @GetMapping(value = "/listPost")
