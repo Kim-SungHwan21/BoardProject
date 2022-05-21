@@ -36,8 +36,28 @@ public class PostPageController {
 //        request.setAttribute("post", post.get());
 //        Optional<Member> member = memberLoginService.getMember(memId);
 //        request.setAttribute("member", member.get());
+
 //        return "index/contextPost";
 //    }
+    @GetMapping("/modifyPost/{boardNo}")
+    public String modifyPostForm(Model model, @PathVariable int boardNo) {
+        model.addAttribute("post", postService.getPost(boardNo));
+
+        return "index/modifyPost";
+    }
+
+    @PostMapping("/modifyPost/{boardNo}")
+    public String modifyPost(@RequestParam("title") String title,
+                             @RequestParam("content") String content,
+                             @PathVariable int boardNo) {
+
+        postService.modifyPost(boardNo, title, content);
+//        TODO /modifyPost 값 안 나옴
+
+
+        return "/index/listPost";
+    }
+
 
     @GetMapping(value = {"/contextPost/{boardNo}"})
     public String contextPost(Model model, @PathVariable int boardNo) {
@@ -52,30 +72,33 @@ public class PostPageController {
 
         return "index/contextPost";
     }
+//    @PostMapping(value = "/registerPost")
+//    public String registerPost(Post post,
+//                               @RequestParam("boardNo") int boardNo,
+//                               @RequestParam("parentsBoardNo") int parentsBoardNo,
+//                               @RequestParam("memNo") int memNo,
+//                               @RequestParam("boardDepth") int boardDepth,
+//                               @RequestParam("boardLevelNo") String boardLevelNo,
+//                               @RequestParam("boardTitle") String boardTitle,
+//                               @RequestParam("boardContext") String boardContext,
+//                               @RequestParam("boardRegisterDateTime") Date boardRegisterDateTime,
+//                               @RequestParam("boardModifyDateTime") Date boardModifyDateTime,
+//                               @RequestParam("boardCommentCount") int boardCommentCount,
+//                               @RequestParam("boardViewCount") int boardViewCount,
+//                               @RequestParam("boardDeleteCheck") boolean boardDeleteCheck,
+//                               @RequestParam("memId") String memId) {
+//
+//        Post post = new Post(boardNo, parentsBoardNo, memNo, boardDepth, boardLevelNo, boardTitle,
+//            boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
+//            boardViewCount, boardDeleteCheck, memId);
+//
+//        postService.registerPost(post);
 
-    @PostMapping(value = "/registerPost")
-    public String registerPost(Post post,
-                               @RequestParam("boardNo") int boardNo,
-                               @RequestParam("parentsBoardNo") int parentsBoardNo,
-                               @RequestParam("memNo") int memNo,
-                               @RequestParam("boardDepth") int boardDepth,
-                               @RequestParam("boardLevelNo") String boardLevelNo,
-                               @RequestParam("boardTitle") String boardTitle,
-                               @RequestParam("boardContext") String boardContext,
-                               @RequestParam("boardRegisterDateTime") Date boardRegisterDateTime,
-                               @RequestParam("boardModifyDateTime") Date boardModifyDateTime,
-                               @RequestParam("boardCommentCount") int boardCommentCount,
-                               @RequestParam("boardViewCount") int boardViewCount,
-                               @RequestParam("boardDeleteCheck") boolean boardDeleteCheck,
-                               @RequestParam("memId") String memId) {
+//        return "index/registerPost";
 
-        Post post = new Post(boardNo, parentsBoardNo, memNo, boardDepth, boardLevelNo, boardTitle,
-            boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
-            boardViewCount, boardDeleteCheck, memId);
+//    }
 
-        postService.registerPost(post);
-        return "index/registerPost";
-    }
+
 
     @GetMapping(value = "/listPost")
     public String listPostForm(Model model) {
@@ -84,12 +107,7 @@ public class PostPageController {
         return "index/listPost";
     }
 
-    @PostMapping("/modifyPost")
-    public String modifyPost() {
-        return "/";
-    }
-
-    @GetMapping("/removePost")
+    @GetMapping("/removePost/{boardNo}")
     public String removePostForm() {
         return "index/removePost";
     }
@@ -97,11 +115,6 @@ public class PostPageController {
     @GetMapping("/registerPost")
     public String registerPostForm() {
         return  "index/registerPost";
-    }
-
-    @GetMapping("/modifyPost")
-    public String modifyPostForm() {
-        return "index/modifyPost";
     }
 
     @GetMapping(value = "/postPage")

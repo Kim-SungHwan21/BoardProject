@@ -9,7 +9,7 @@ public interface PostService {
     List<Post> getPosts();
     Optional<Post> getPost(int boardNo);
     void registerPost(Post post);
-    void modifyPost(int boardNo, Post post);
+    void modifyPost(int boardNo, String title, String content);
     void deletePost(int boardNo);
     Optional<Member> getPostWriter(int boardNo);
 }

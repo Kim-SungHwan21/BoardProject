@@ -16,13 +16,9 @@ a
 s
 Csrc/main/java/com/nhnacademy/jdbc/board/student/domain/Student.java,b\8\b8c8e4fea63111cd3ca7dffbe0aa46a36e72d5eb
 {
-Ksrc/main/java/com/nhnacademy/jdbc/board/student/service/StudentService.java,a\8\a88bd37e5641e283eff35bf96733a103f80033fb
-{
 Ksrc/main/java/com/nhnacademy/jdbc/board/controller/web/IndexController.java,7\1\71c841d095ae379196441eb9e81c838c70812296
 q
 Asrc/main/java/com/nhnacademy/jdbc/board/config/MybatisConfig.java,a\2\a213f771d1c2c718c6a2de8c8394b4ee5f14a3c5
-y
-Isrc/main/java/com/nhnacademy/jdbc/board/student/mapper/StudentMapper.java,0\b\0be5924ec98f3725e20f16b1fc6b91219c7a8b9d
 b
 2src/main/webapp/WEB-INF/views/index/loginForm.html,b\2\b28a46febe395048d7d2dbcd1c107b632c730900
 f
