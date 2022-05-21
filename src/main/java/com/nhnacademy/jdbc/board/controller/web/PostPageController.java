@@ -4,10 +4,13 @@ import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.member.service.MemberLoginService;
 import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.post.service.PostService;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,18 +30,6 @@ public class PostPageController {
         this.postService = postService;
     }
 
-
-//    @GetMapping(value = {"/contextPost"})
-//    public String contextPost(HttpServletRequest request,
-//                              @RequestParam("boardNo") int boardNo,
-//                              @RequestParam("memId") String memId) {
-//        Optional<Post> post = postService.getPost(boardNo);
-//        request.setAttribute("post", post.get());
-//        Optional<Member> member = memberLoginService.getMember(memId);
-//        request.setAttribute("member", member.get());
-
-//        return "index/contextPost";
-//    }
     @GetMapping("/modifyPost/{boardNo}")
     public String modifyPostForm(Model model, @PathVariable int boardNo) {
         model.addAttribute("post", postService.getPost(boardNo).get());
@@ -68,31 +59,33 @@ public class PostPageController {
 
         return "index/contextPost";
     }
-//    @PostMapping(value = "/registerPost")
-//    public String registerPost(Post post,
-//                               @RequestParam("boardNo") int boardNo,
-//                               @RequestParam("parentsBoardNo") int parentsBoardNo,
-//                               @RequestParam("memNo") int memNo,
-//                               @RequestParam("boardDepth") int boardDepth,
-//                               @RequestParam("boardLevelNo") String boardLevelNo,
-//                               @RequestParam("boardTitle") String boardTitle,
-//                               @RequestParam("boardContext") String boardContext,
-//                               @RequestParam("boardRegisterDateTime") Date boardRegisterDateTime,
-//                               @RequestParam("boardModifyDateTime") Date boardModifyDateTime,
-//                               @RequestParam("boardCommentCount") int boardCommentCount,
-//                               @RequestParam("boardViewCount") int boardViewCount,
-//                               @RequestParam("boardDeleteCheck") boolean boardDeleteCheck,
-//                               @RequestParam("memId") String memId) {
-//
-//        Post post = new Post(boardNo, parentsBoardNo, memNo, boardDepth, boardLevelNo, boardTitle,
-//            boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
-//            boardViewCount, boardDeleteCheck, memId);
-//
+    @PostMapping(value = "/registerPost")
+    public String registerPost(@RequestParam("boardTitle") String boardTitle,
+                               @RequestParam("boardContext") String boardContext,
+                               HttpServletRequest request,
+                               HttpServletResponse response,
+                               Model model) {
+        List<Post> posts = postService.getPosts();
+        int size = posts.size()+1;
+        model.addAttribute("size", size);
+        HttpSession session = request.getSession(true);
+
+        Member member = new Member(1, session.getId());
+        model.addAttribute("member", member);
+
+//        Date now = new Date();
+//        String boardLevel = String.valueOf(posts.size()+1);
+//        Post post = new Post(posts.size()+1, 0, 1, 1,
+//            boardLevel, boardTitle, boardContext,
+//            now, null, 0,
+//         0, false);
 //        postService.registerPost(post);
+//        model.addAttribute("post", post);
 
-//        return "index/registerPost";
 
-//    }
+        return "index/registerPost";
+
+    }
 
 
 

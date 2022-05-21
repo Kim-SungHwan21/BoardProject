@@ -11,10 +11,9 @@
             <form method="post" action="/registerPost">
                 <h3 style="text-align: center;">게시글등록화면</h3>
                 <div class="form-group">
-                    게시글번호 : <span th:text="${post.boardNo}"></span>
-<!--                    ${postDataLoad.getPosts().size() +1}-->
-                </div>
-                <div class="form-group">
+                    <div class="form-group">
+                        게시글번호 : <span th:text="${size}"></span>
+                    </div>
                     작성자 : <span th:text="${member.memId}"></span>
                 </div>
                 <div class="form-group">

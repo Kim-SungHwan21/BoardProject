@@ -12,4 +12,9 @@ public class Member {
     private int memNo;
     private String memId;
     private String memPassword;
+
+    public Member(int memNo, String memId) {
+        this.memNo = memNo;
+        this.memId = memId;
+    }
 }
