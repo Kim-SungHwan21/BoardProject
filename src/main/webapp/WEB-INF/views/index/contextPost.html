@@ -15,7 +15,7 @@
 <span>내용</span> <br> <p th:text="${post.boardContext}"></p>
 <td><a th:href="@{|/modifyPost/${post.boardNo}|}"> 수정</a></td>
 <td><a th:href="@{|/removePost/${post.boardNo}|}"> 삭제</a></td>
-<form method="post" action="/registerComment/${post.boardNo}/${post.boardCommentCount}">
+<form method="post" th:action="@{|/registerComment/${post.boardNo}|}">
     <div>
         <textarea name="CommentText" rows ="10" cols="50"></textarea>
     </div>

@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface CommentService {
     List<PostComment> getComments(int boardNo);
-    void registerComment(int postCommentNo, int parentsCommentNo, int memNo, int boardNo,
+    void registerComment(int postCommentNo, Integer parentsCommentNo, int memNo, int boardNo,
                          int postCommentDepth, String postCommentLevelNo,
                          String postCommentContext, Date postCommentRegisterDatetime);
     void modifyComment(int postCommentNo, String postCommentContext);
     void deleteComment(int postCommentNo);
+
+    List<PostComment> getAllComments();
 }

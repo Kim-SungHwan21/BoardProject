@@ -21,4 +21,6 @@ public interface CommentMapper {
     List<PostComment> selectComments(@Param("boardNo") int boardNo);
 
     Optional<Member> selectCommentWriter(@Param("postCommentNo") int postCommentNo);
+
+    List<PostComment> selectAllComments();
 }

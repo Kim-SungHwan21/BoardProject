@@ -14,6 +14,13 @@
         where B.boardNo = #{boardNo}
     </select>
 
+    <select id="selectAllComments" resultType="com.nhnacademy.jdbc.board.postcomment.domain.PostComment">
+        select postCommentNo, parentsCommentNo, A.memNo, A.boardNo,
+               postCommentDepth, postCommentLevelNo,
+               postCommentContext, postCommentRegisterDatetime, M.memId
+        from postComment A
+                 inner join mem M on A.memNo = M.memNo
+    </select>
     <insert id="registerComment">
         insert into postComment(postCommentNo, parentsCommentNo, memNo, boardNo,
                                 postCommentDepth, postCommentLevelNo,

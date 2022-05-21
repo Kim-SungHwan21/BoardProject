@@ -1,6 +1,5 @@
 package com.nhnacademy.jdbc.board.postcomment.service.impl;
 
-import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.postcomment.domain.PostComment;
 import com.nhnacademy.jdbc.board.postcomment.mapper.CommentMapper;
 import com.nhnacademy.jdbc.board.postcomment.service.CommentService;
@@ -23,7 +22,7 @@ public class DefaultCommentService implements CommentService {
     }
 
     @Override
-    public void registerComment(int postCommentNo, int parentsCommentNo, int memNo, int boardNo,
+    public void registerComment(int postCommentNo, Integer parentsCommentNo, int memNo, int boardNo,
                                 int postCommentDepth, String postCommentLevelNo,
                                 String postCommentContext, Date postCommentRegisterDatetime) {
         commentMapper.registerComment(postCommentNo, parentsCommentNo, memNo, boardNo, postCommentDepth, postCommentLevelNo,
@@ -38,5 +37,10 @@ public class DefaultCommentService implements CommentService {
     @Override
     public void deleteComment(int postCommentNo) {
         commentMapper.deleteByNo(postCommentNo);
+    }
+
+    @Override
+    public List<PostComment> getAllComments() {
+        return commentMapper.selectAllComments();
     }
 }
