@@ -62,26 +62,14 @@ public class PostPageController {
     @PostMapping(value = "/registerPost")
     public String registerPost(@RequestParam("boardTitle") String boardTitle,
                                @RequestParam("boardContext") String boardContext,
-                               HttpServletRequest request,
-                               HttpServletResponse response,
+                               HttpSession session,
                                Model model) {
-        List<Post> posts = postService.getPosts();
-        int size = posts.size()+1;
-        model.addAttribute("size", size);
-        HttpSession session = request.getSession(true);
 
-        Member member = new Member(1, session.getId());
-        model.addAttribute("member", member);
-
-//        Date now = new Date();
-//        String boardLevel = String.valueOf(posts.size()+1);
-//        Post post = new Post(posts.size()+1, 0, 1, 1,
-//            boardLevel, boardTitle, boardContext,
-//            now, null, 0,
-//         0, false);
-//        postService.registerPost(post);
-//        model.addAttribute("post", post);
-
+        int boardNo = (int) session.getAttribute("size");
+        Member member = (Member) session.getAttribute("member");
+        postService.registerPost(boardNo, null, member.getMemNo(),
+            1, String.valueOf(boardNo), boardTitle, boardContext,
+            new Date(), null, 0, 0, false);
 
         return "index/registerPost";
 
@@ -103,7 +91,15 @@ public class PostPageController {
     }
 
     @GetMapping("/registerPost")
-    public String registerPostForm() {
+    public String registerPostForm(Model model, HttpSession session) {
+
+        List<Post> posts = postService.getPosts();
+        int size = posts.size()+1;
+        session.setAttribute("size", size);
+        Member member = (Member) session.getAttribute("member");
+        model.addAttribute("size", size);
+        model.addAttribute("member", member);
+
         return  "index/registerPost";
     }
 

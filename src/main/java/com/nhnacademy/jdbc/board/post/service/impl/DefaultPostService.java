@@ -29,19 +29,15 @@ public class DefaultPostService implements PostService {
     }
 
     @Override
-    public void registerPost(int boardNo, int parentsBoardNo, int memNo, int boardDepth,
+    public void registerPost(int boardNo, Integer parentsBoardNo, int memNo, int boardDepth,
                              String boardLevelNo, String boardTitle, String boardContext,
                              Date boardRegisterDatetime, Date boardModifyDatetime, int boardCommentCount,
                              int boardViewCount, boolean boardDeleteCheck) {
 
-        List<Post> posts = getPosts();
-        Date now = new Date();
-        String boardLevel = String.valueOf(posts.size()+1);
-
-        postMapper.registerPost(posts.size()+1, 0, 1, 1,
-            boardLevel, boardTitle, boardContext,
-            now, null, 0,
-            0, false);
+        postMapper.registerPost(boardNo, parentsBoardNo, memNo, boardDepth,
+         boardLevelNo, boardTitle, boardContext,
+             boardRegisterDatetime,  boardModifyDatetime, boardCommentCount,
+         boardViewCount, boardDeleteCheck);
     }
 
     @Override

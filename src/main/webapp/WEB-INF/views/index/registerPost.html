@@ -17,14 +17,14 @@
                     작성자 : <span th:text="${member.memId}"></span>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" name="title" maxlenth="20">
+                    <input type="text" class="form-control" placeholder="제목" name="boardTitle" maxlenth="20">
                 </div>
                 <div class="form-group">
-                    <textarea rows="10" cols="30" name="content"></textarea>
+                    <textarea rows="10" cols="30" name="boardContext"></textarea>
                 </div>
-                <div class="form-group">
-                    작성일시 <span th:text="${post.boardRegisterDatetime}"></span>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    작성일시 <span th:text="${post.boardRegisterDatetime}"></span>-->
+<!--                </div>-->
                 <input type="submit" class="btn btn-primary form-control"게시글등록>
             </form>
         </div>

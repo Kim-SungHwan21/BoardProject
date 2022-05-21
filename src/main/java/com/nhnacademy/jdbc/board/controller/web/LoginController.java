@@ -32,15 +32,11 @@ public class LoginController {
     @PostMapping(value = "/login")
     public String doLogin(@RequestParam("memId") String memId,
                           @RequestParam("password") String password,
-                          HttpServletRequest request,
-                          HttpServletResponse response) {
+                          HttpSession session) {
 
-        if (memberLoginService.isLogin(memId, password)) {
-            HttpSession session = request.getSession(true);
-
-            Cookie cookie = new Cookie("SESSION", session.getId());
-            response.addCookie(cookie);
-
+        Optional<Member> member = memberLoginService.doLogin(memId, password);
+        if (member.isPresent()) {
+            session.setAttribute("member", member.get());
             return "index/loginSuccess";
         } else {
             return "index/longinForm";
