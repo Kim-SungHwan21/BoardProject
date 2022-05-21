@@ -104,8 +104,9 @@ public class PostPageController {
     }
 
     @GetMapping("/removePost/{boardNo}")
-    public String removePostForm() {
-        return "index/removePost";
+    public String removePostForm(@PathVariable int boardNo) {
+        postService.deletePost(boardNo);
+        return "index/postPage";
     }
 
     @GetMapping("/registerPost")

@@ -11,6 +11,6 @@ public interface PostMapper {
     List<Post> selectPosts();
     void registerPost(Post post);
     void updateContextByNo(@Param("boardContext") String boardContext,@Param("boardTitle") String boardTitle,@Param("boardNo") int boardNo);
-    void deleteByNo(int boardNo);
+    void deleteByNo(@Param("boardNo") int boardNo);
     Optional<Member> selectPostWriter(@Param("boardNo") int boardNo);
 }
