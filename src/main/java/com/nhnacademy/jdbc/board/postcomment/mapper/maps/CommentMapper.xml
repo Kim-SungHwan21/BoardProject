@@ -5,11 +5,13 @@
 
 <mapper namespace="com.nhnacademy.jdbc.board.postcomment.mapper.CommentMapper">
     <select id="selectComments" resultType="com.nhnacademy.jdbc.board.postcomment.domain.PostComment">
-        select postCommentNo, parentsCommentNo, A.memNo, boardNo,
+        select postCommentNo, parentsCommentNo, A.memNo, A.boardNo,
             postCommentDepth, postCommentLevelNo,
             postCommentContext, postCommentRegisterDatetime, M.memId
         from postComment A
         inner join mem M on A.memNo = M.memNo
+        inner join board B on A.boardNo = B.boardNo
+        where B.boardNo = #{boardNo}
     </select>
 
     <insert id="registerComment">

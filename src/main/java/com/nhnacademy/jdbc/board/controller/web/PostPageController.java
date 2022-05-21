@@ -4,6 +4,8 @@ import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.member.service.MemberLoginService;
 import com.nhnacademy.jdbc.board.post.domain.Post;
 import com.nhnacademy.jdbc.board.post.service.PostService;
+import com.nhnacademy.jdbc.board.postcomment.domain.PostComment;
+import com.nhnacademy.jdbc.board.postcomment.service.CommentService;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -25,9 +27,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class PostPageController {
     private final PostService postService;
+    private final CommentService commentService;
 
-    public PostPageController(PostService postService) {
+    public PostPageController(PostService postService, CommentService commentService) {
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/modifyPost/{boardNo}")
@@ -53,6 +57,8 @@ public class PostPageController {
         model.addAttribute("post", post);
         Member member = postService.getPostWriter(boardNo).get();
         model.addAttribute("member", member);
+        List<PostComment> comments = commentService.getComments(boardNo);
+        model.addAttribute("comments", comments);
 //        List<Member> members = memberLoginService.getMembers();
 
 //        model.addAttribute("members", members);
@@ -106,11 +112,6 @@ public class PostPageController {
     @GetMapping(value = "/postPage")
     public String postPage() {
         return "index/postPage";
-    }
-
-    @GetMapping(value = "/registerComment")
-    public String registerComment() {
-        return "index/contextPost/{boardNo}";
     }
 
 }

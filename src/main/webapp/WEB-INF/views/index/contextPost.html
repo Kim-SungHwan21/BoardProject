@@ -15,7 +15,12 @@
 <span>내용</span> <br> <p th:text="${post.boardContext}"></p>
 <td><a th:href="@{|/modifyPost/${post.boardNo}|}"> 수정</a></td>
 <td><a th:href="@{|/removePost/${post.boardNo}|}"> 삭제</a></td>
-<td><a th:href="@{|/registerComment/${comment.postCommentNo}|}"> 댓글등록</a></td>
+<form method="post" action="/registerComment/${post.boardNo}/${post.boardCommentCount}">
+    <div>
+        <textarea name="CommentText" rows ="10" cols="50"></textarea>
+    </div>
+    <input type="submit">
+</form>
 <br />
 <table>
     <thead>
@@ -27,13 +32,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="post : ${posts}">
-        <td th:text="${post.boardNo}"/>
-        <td th:text="${post.memId}"/>
-        <td><a th:href="@{|/contextPost/${post.boardNo}|}"> <span th:text="${post.BoardTitle}"></span></a></td>
-        <td th:text="${post.BoardRegisterDatetime}"/>
-        <td><a th:href="@{|/modifyComment/${comment.postCommentNo}|}"> 댓글 수정 </a><br></td>
-        <td><a th:href="@{|/removeComment/${comment.postCommentNo}|}"> 댓글 삭제 </a><br></td>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.postCommentNo}"/>
+        <td th:text="${comment.memId}"/>
+        <td th:text="${comment.postCommentContext}"/>
+        <td th:text="${comment.postCommentRegisterDatetime}"/>
+        <td><a th:href="@{|/registerReComment/${comment.postCommentNo}}"> 대댓글등록</a><br></td>
+        <td><a th:href="@{|/modifyComment/${comment.postCommentNo}|}"> 댓글수정 </a><br></td>
+        <td><a th:href="@{|/removeComment/${comment.postCommentNo}|}"> 댓글삭제 </a><br></td>
         <!--        <td th:text="${post.BoardTitle}"><a href="/contextPost"></a></td>-->
         <!--        <td><a th:href="@{/modifyComment/${comment.id}"> </a></td>-->
         <!--        <a th:href="@{|/postModify/${post.postNum|}"-->

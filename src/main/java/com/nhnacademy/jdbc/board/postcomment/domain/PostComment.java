@@ -15,6 +15,7 @@ public class PostComment {
     private String postCommentLevelNo;
     private String postCommentContext;
     private Date postCommentRegisterDatetime;
+    private String memId;
 
 //    public PostComment(int postCommentNo, int parentsCommentNo, int memNo, int boardNo,
 //                       int postCommentDepth, String postCommentLevelNo,

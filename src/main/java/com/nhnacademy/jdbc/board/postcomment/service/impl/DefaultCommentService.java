@@ -1,11 +1,14 @@
 package com.nhnacademy.jdbc.board.postcomment.service.impl;
 
 import com.nhnacademy.jdbc.board.post.domain.Post;
+import com.nhnacademy.jdbc.board.postcomment.domain.PostComment;
 import com.nhnacademy.jdbc.board.postcomment.mapper.CommentMapper;
 import com.nhnacademy.jdbc.board.postcomment.service.CommentService;
 import java.util.Date;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultCommentService implements CommentService {
     private final CommentMapper commentMapper;
 
@@ -15,8 +18,8 @@ public class DefaultCommentService implements CommentService {
     }
 
     @Override
-    public List<Post> getComments() {
-        return commentMapper.selectComments();
+    public List<PostComment> getComments(int boardNo) {
+        return commentMapper.selectComments(boardNo);
     }
 
     @Override

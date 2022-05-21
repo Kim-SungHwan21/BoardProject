@@ -2,6 +2,7 @@ package com.nhnacademy.jdbc.board.postcomment.mapper;
 
 import com.nhnacademy.jdbc.board.member.domain.Member;
 import com.nhnacademy.jdbc.board.post.domain.Post;
+import com.nhnacademy.jdbc.board.postcomment.domain.PostComment;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public interface CommentMapper {
 
     void deleteByNo(int postCommentNo);
 
-    List<Post> selectComments();
+    List<PostComment> selectComments(@Param("boardNo") int boardNo);
 
     Optional<Member> selectCommentWriter(@Param("postCommentNo") int postCommentNo);
 }
