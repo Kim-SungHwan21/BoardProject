@@ -10,7 +10,7 @@ public interface PostMapper {
     Optional<Post> selectPost(@Param("boardNo") int boardNo);
     List<Post> selectPosts();
     void registerPost(Post post);
-    void updateContextByNo(String boardContext, String boardTitle, int boardNo);
+    void updateContextByNo(@Param("boardContext") String boardContext,@Param("boardTitle") String boardTitle,@Param("boardNo") int boardNo);
     void deleteByNo(int boardNo);
     Optional<Member> selectPostWriter(@Param("boardNo") int boardNo);
 }

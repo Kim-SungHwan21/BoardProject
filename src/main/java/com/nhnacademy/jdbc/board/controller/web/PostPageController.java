@@ -41,8 +41,7 @@ public class PostPageController {
 //    }
     @GetMapping("/modifyPost/{boardNo}")
     public String modifyPostForm(Model model, @PathVariable int boardNo) {
-        model.addAttribute("post", postService.getPost(boardNo));
-
+        model.addAttribute("post", postService.getPost(boardNo).get());
         return "index/modifyPost";
     }
 
@@ -52,9 +51,6 @@ public class PostPageController {
                              @PathVariable int boardNo) {
 
         postService.modifyPost(boardNo, title, content);
-//        TODO /modifyPost 값 안 나옴
-
-
         return "/index/listPost";
     }
 

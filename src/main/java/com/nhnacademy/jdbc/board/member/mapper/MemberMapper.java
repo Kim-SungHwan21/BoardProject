@@ -10,5 +10,4 @@ public interface MemberMapper {
     Optional<Member> selectMember(String id);
     List<Member> selectMembers();
     void insertMember(Member member);
-
 }

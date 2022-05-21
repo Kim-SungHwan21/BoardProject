@@ -35,6 +35,7 @@ public class DefaultPostService implements PostService {
 
     @Override
     public void modifyPost(int boardNo, String title, String content) {
+        System.out.println(content);
         postMapper.updateContextByNo(content, title, boardNo);
     }
 

@@ -5,8 +5,11 @@
 
 <mapper namespace="com.nhnacademy.jdbc.board.post.mapper.PostMapper">
     <select id="selectPost" resultType="com.nhnacademy.jdbc.board.post.domain.Post">
-        select *
-        from board
+        select boardNo, parentsBoardNo, B.memNo, boardDepth, boardLevelNo, boardTitle,
+               boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
+               boardViewCount, boardDeleteCheck, M.memId
+        from board B
+        inner join mem M on B.memNo = M.memNo
         where boardNo = #{boardNo}
     </select>
 
@@ -29,7 +32,7 @@
 
     <update id="updateContextByNo">
         update board set boardContext= #{boardContext}, boardTitle = #{boardTitle}
-        where memNo = #{memNo} and boardRegisterDateTime = #{boardRegisterDateTime} and boardTitle = #{boardTitle}
+        where boardNo = #{boardNo}
     </update>
 
     <delete id="deleteByNo">
