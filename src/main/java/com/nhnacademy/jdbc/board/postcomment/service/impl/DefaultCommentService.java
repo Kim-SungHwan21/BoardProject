@@ -24,16 +24,16 @@ public class DefaultCommentService implements CommentService {
                                 int postCommentDepth, String postCommentLevelNo,
                                 String postCommentContext, Date postCommentRegisterDatetime) {
         commentMapper.registerComment(postCommentNo, parentsCommentNo, memNo, boardNo, postCommentDepth, postCommentLevelNo,
-             postCommentContext, postCommentRegisterDatetime)
+             postCommentContext, postCommentRegisterDatetime);
     }
 
     @Override
     public void modifyComment(int postCommentNo, String postCommentContext) {
-        commentMapper.updateContextByNo(postCommentNo, postCommentContext)
+        commentMapper.updateContextByNo(postCommentNo, postCommentContext);
     }
 
     @Override
     public void deleteComment(int postCommentNo) {
-        commentMapper.deleteByNo(postCommentNo)
+        commentMapper.deleteByNo(postCommentNo);
     }
 }
