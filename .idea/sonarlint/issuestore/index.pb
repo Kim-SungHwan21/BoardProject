@@ -21,8 +21,6 @@ c
 Zsrc/main/java/com/nhnacademy/jdbc/board/member/service/impl/DefaultMemberLoginService.java,2\7\270cd4e3c385d54e355a886c6b198e7bcb498540
 {
 Ksrc/main/java/com/nhnacademy/jdbc/board/member/mapper/maps/MemberMapper.xml,2\c\2c2cda124463d1ba7d2ebd8bbf47fe8789399356
-m
-=src/main/java/com/nhnacademy/jdbc/board/post/domain/Post.java,b\f\bff145bea146e189901d8fd65309aaa6b9de6a8b
 b
 2src/main/webapp/WEB-INF/views/index/loginForm.html,b\2\b28a46febe395048d7d2dbcd1c107b632c730900
 ^
