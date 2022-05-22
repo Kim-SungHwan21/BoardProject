@@ -19,9 +19,17 @@
                boardViewCount, boardDeleteCheck, M.memId
         from board B
         inner join mem M on B.memNo = M.memNo
-        order by boardNo
-        limit 10 offset 0
 
+    </select>
+
+    <select id="selectPostsOrderByBoardNo" resultType="com.nhnacademy.jdbc.board.post.domain.Post">
+        select boardNo, parentsBoardNo, B.memNo, boardDepth, boardLevelNo, boardTitle,
+               boardContext, boardRegisterDateTime, boardModifyDateTime, boardCommentCount,
+               boardViewCount, boardDeleteCheck, M.memId
+        from board B
+                 inner join mem M on B.memNo = M.memNo
+        order by boardNo
+            limit 20 offset #{page}
     </select>
 
     <insert id="registerPost">

@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface PostService {
     List<Post> getPosts();
+    List<Post> showPosts(int page);
     Optional<Post> getPost(int boardNo);
     void registerPost(int boardNo, Integer parentsBoardNo, int memNo, int boardDepth,
                       String boardLevelNo, String boardTitle, String boardContext,

@@ -7,6 +7,7 @@ import com.nhnacademy.jdbc.board.post.service.PostService;
 import com.nhnacademy.jdbc.board.postcomment.domain.PostComment;
 import com.nhnacademy.jdbc.board.postcomment.service.CommentService;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -82,12 +83,18 @@ public class PostPageController {
 
 
 
-    @GetMapping(value = "/listPost")
-    public String listPostForm(Model model) {
-        List<Post> posts = postService.getPosts();
+    @GetMapping(value = "/listPost/{page}")
+    public String listPostForm(Model model, @PathVariable int page) {
+        List<Post> posts = postService.showPosts((page - 1) * 20);
         model.addAttribute("posts", posts);
+        List<Integer> pages = new ArrayList<>();
+        for(int i = 1; i <= ((posts.size() % 20) == 0 ? 1 + posts.size() / 20 : posts.size() / 20 + 2); i++) {
+            pages.add(i);
+        }
+        model.addAttribute("pages", pages);
         return "index/listPost";
     }
+
 
     @GetMapping("/removePost/{boardNo}")
     public String removePostForm(@PathVariable int boardNo) {

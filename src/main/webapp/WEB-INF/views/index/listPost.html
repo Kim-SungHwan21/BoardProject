@@ -16,7 +16,7 @@
     <tbody>
     <tr th:each="post : ${posts}">
         <td th:text="${post.boardNo}"/>
-        <td th:text="${post.memId}"/>z
+        <td th:text="${post.memId}"/>
         <td><a th:href="@{|/contextPost/${post.boardNo}|}"> <span th:text="${post.BoardTitle}"></span></a></td>
 <!--        <td><a th:href="@{|/modifyComment/${comment.commentNo}|}"> 댓글 수정 </a><br></td> 아영님 코드 추가-->
         <td th:text="${post.BoardRegisterDatetime}"/>
@@ -27,6 +27,10 @@
 
     </tr>
     </tbody>
+</table>
+
+<table>
+    <td th:each = "page : ${pages}"> <a th:href="@{|/listPost/${page}|}"><span th:text="${page}"></span></a></td>
 </table>
 
 <a th:href="@{|/postPage|}">게시판메뉴페이지</a>

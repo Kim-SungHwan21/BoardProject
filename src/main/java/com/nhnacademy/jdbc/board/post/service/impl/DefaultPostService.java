@@ -24,6 +24,11 @@ public class DefaultPostService implements PostService {
     }
 
     @Override
+    public List<Post> showPosts(int page) {
+        return postMapper.selectPostsOrderByBoardNo(page);
+    }
+
+    @Override
     public Optional<Post> getPost(int boardNo) {
         return postMapper.selectPost(boardNo);
     }

@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 public interface PostMapper {
     Optional<Post> selectPost(@Param("boardNo") int boardNo);
     List<Post> selectPosts();
+    List<Post> selectPostsOrderByBoardNo(@Param("page") int page);
     void registerPost(@Param("boardNo") int boardNo, @Param("parentsBoardNo") Integer parentsBoardNo, @Param("memNo") int memNo, @Param("boardDepth") int boardDepth,
                       @Param("boardLevelNo") String boardLevelNo,@Param("boardTitle") String boardTitle, @Param("boardContext") String boardContext,
                       @Param("boardRegisterDatetime") Date boardRegisterDatetime, @Param("boardModifyDatetime") Date boardModifyDatetime, @Param("boardCommentCount") Integer boardCommentCount,
