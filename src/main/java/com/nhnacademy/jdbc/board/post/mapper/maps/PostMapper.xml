@@ -19,6 +19,9 @@
                boardViewCount, boardDeleteCheck, M.memId
         from board B
         inner join mem M on B.memNo = M.memNo
+        order by boardNo
+        limit 10 offset 0
+
     </select>
 
     <insert id="registerPost">
