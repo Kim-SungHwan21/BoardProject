@@ -44,12 +44,14 @@ public class PostCommentController {
     }
 
     @PostMapping("/modifyComment/{boardNo}")
-    public String modifyCommentForm(@RequestParam("postCommentText") String postCommentText,
-                                    @PathVariable int postCommentNo,
-                                    Model model) {
-//        Comment comment =
-//        model.addAttribute("comment", comment);
+    public String modifyComment(@RequestParam("postCommentText") String postCommentText,
+                                    @PathVariable int postCommentNo) {
         commentService.modifyComment(postCommentNo, postCommentText);
+        return "/index/postPage";
+    }
+
+    @GetMapping("/modifyComment/{postCommentNo}")
+    public String modifyCommentForm(@PathVariable int postCommentNo,Model model) {
         return "/index/postPage";
     }
 }

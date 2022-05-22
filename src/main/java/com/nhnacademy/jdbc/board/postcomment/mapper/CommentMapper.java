@@ -16,7 +16,7 @@ public interface CommentMapper {
 
     void updateContextByNo(@Param("postCommentNo") int postCommentNo, @Param("postCommentContext") String postCommentContext);
 
-    void deleteByNo(int postCommentNo);
+    void deleteByNo(@Param("postCommentNo") int postCommentNo);
 
     List<PostComment> selectComments(@Param("boardNo") int boardNo);
 

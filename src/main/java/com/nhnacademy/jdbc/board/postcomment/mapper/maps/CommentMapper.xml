@@ -11,7 +11,7 @@
         from postComment A
         inner join mem M on A.memNo = M.memNo
         inner join board B on A.boardNo = B.boardNo
-        where B.boardNo = #{boardNo}
+        where B.boardNo = #{boardNo} and A.postCommentDeleteCheck = false;
     </select>
 
     <select id="selectAllComments" resultType="com.nhnacademy.jdbc.board.postcomment.domain.PostComment">
@@ -24,8 +24,8 @@
     <insert id="registerComment">
         insert into postComment(postCommentNo, parentsCommentNo, memNo, boardNo,
                                 postCommentDepth, postCommentLevelNo,
-                                postCommentContext, postCommentRegisterDatetime)
-        values (#{postCommentNo}, #{parentsCommentNo}, #{memNo}, #{boardNo}, #{postCommentDepth}, #{postCommentLevelNo}, #{postCommentContext}, now())
+                                postCommentContext, postCommentRegisterDatetime, postCommentDeleteCheck)
+        values (#{postCommentNo}, #{parentsCommentNo}, #{memNo}, #{boardNo}, #{postCommentDepth}, #{postCommentLevelNo}, #{postCommentContext}, now(), false)
     </insert>
 
     <update id="updateContextByNo">
@@ -33,9 +33,14 @@
         where postCommentNo = #{postCommentNo}
     </update>
 
-    <delete id="deleteByNo">
-        delete from postComment where postCommentNo = #{postCommentNo}
-    </delete>
+    <update id="deleteByNo">
+        update postComment set postCommentDeleteCheck = true
+        where postCommentNo = #{postCommentNo}
+    </update>
+
+<!--    <delete id="deleteByNo">-->
+<!--        delete from postComment where postCommentNo = #{postCommentNo}-->
+<!--    </delete>-->
 
     <select id="selectCommentWriter" resultType="com.nhnacademy.jdbc.board.postcomment.domain.PostComment">
         select M.memId from postComment A inner join mem M on A.memNo = M.memNo
