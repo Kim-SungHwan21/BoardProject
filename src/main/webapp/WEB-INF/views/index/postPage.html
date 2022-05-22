@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title>Title</title>
 </head>
@@ -7,9 +7,10 @@
 <table method="post" action="/postPage">
     <h1>게시판 페이지</h1>
     <hr>
-    <a href="listPost">게시글조회</a><br>
-    <a href="registerPost">게시글추가</a><br>
+    <a th:href="@{|/listPost|}">게시글조회</a>
+    <br>
+    <a th:href="@{|/registerPost|}">게시글추가</a>
 </table>
-<a href="index">NHN게시판웹사이트</a>
+<a th:href="@{|/index|}">NHN게시판웹사이트</a>
 </body>
 </html>

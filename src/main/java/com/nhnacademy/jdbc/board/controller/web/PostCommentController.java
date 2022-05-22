@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +35,21 @@ public class PostCommentController {
             boardNo, 1, String.valueOf(size), postCommentText, new Date());
 
         return "index/postPage";
+    }
+
+    @GetMapping("/removeComment/{boardNo}")
+    public String removeComment(@PathVariable int boardNo) {
+        commentService.deleteComment(boardNo);
+        return "index/postPage";
+    }
+
+    @PostMapping("/modifyComment/{boardNo}")
+    public String modifyCommentForm(@RequestParam("postCommentText") String postCommentText,
+                                    @PathVariable int postCommentNo,
+                                    Model model) {
+//        Comment comment =
+//        model.addAttribute("comment", comment);
+        commentService.modifyComment(postCommentNo, postCommentText);
+        return "/index/postPage";
     }
 }
