@@ -8,8 +8,7 @@ import lombok.ToString;
 import lombok.Value;
 
 
-@Getter
-@Setter
+@Data
 @ToString
 public class Member {
     private int memNo;
