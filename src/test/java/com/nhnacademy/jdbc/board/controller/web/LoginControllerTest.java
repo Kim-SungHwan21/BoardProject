@@ -63,13 +63,13 @@ class LoginControllerTest {
     @Test
     void dologinIsNotSuccessful() throws Exception {
         when(memberLoginService.doLogin(anyString(), anyString()))
-            .thenReturn(Optional.of(member));
+            .thenReturn(Optional.empty());
 
         MvcResult mvcResult = mockMvc.perform(post("/login")
                 .param("memId", "admin")
-                .param("password", "false"))
+                .param("password", "12345"))
             .andExpect(status().is5xxServerError())
-            .andExpect(view().name("index/longinForm"))
+            .andExpect(view().name("index/longin"))
             .andReturn();
 
         HttpSession httpSession = mvcResult.getRequest().getSession(false);

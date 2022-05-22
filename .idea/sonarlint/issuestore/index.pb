@@ -37,8 +37,6 @@ Ksrc/main/java/com/nhnacademy/jdbc/board/postcomment/domain/PostComment.java,8\
 Msrc/main/java/com/nhnacademy/jdbc/board/postcomment/mapper/CommentMapper.java,4\e\4e8db9e80fe3e9305498c3702841ef92f0eff55d
 Å
 Qsrc/main/java/com/nhnacademy/jdbc/board/postcomment/mapper/maps/CommentMapper.xml,0\c\0c4a6dd780637f0789879e3151b8597d0933f02e
-e
-5src/main/webapp/WEB-INF/views/index/registerPost.html,c\5\c5a9a348b6dfaaaea5cede314767631d79416993
 a
 1src/main/webapp/WEB-INF/views/index/adminPage.jsp,a\d\ad54379bc0e160d71d75bdb7fe85a78484740a31
 
