@@ -2,15 +2,18 @@ package com.nhnacademy.jdbc.board.post.domain;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
-@Data
+@Getter
+@Setter
 @ToString
 public class Post {
     private int boardNo;
-    private int parentsBoardNo;
+    private Integer parentsBoardNo;
     private int memNo;
     private int boardDepth;
     private String boardLevelNo;

@@ -8,7 +8,7 @@ import lombok.ToString;
 @Data
 public class PostComment {
     private int postCommentNo;
-    private int parentsCommentNo;
+    private Integer parentsCommentNo;
     private int memNo;
     private int boardNo;
     private int postCommentDepth;
