@@ -43,7 +43,7 @@ public class PostCommentController {
         return "index/postPage";
     }
 
-    @PostMapping("/modifyComment/{boardNo}")
+    @PostMapping("/modifyComment/{postCommentNo}")
     public String modifyComment(@RequestParam("postCommentText") String postCommentText,
                                     @PathVariable int postCommentNo) {
         commentService.modifyComment(postCommentNo, postCommentText);
@@ -51,7 +51,8 @@ public class PostCommentController {
     }
 
     @GetMapping("/modifyComment/{postCommentNo}")
-    public String modifyCommentForm(@PathVariable int postCommentNo,Model model) {
-        return "/index/postPage";
+    public String modifyCommentForm(@PathVariable int postCommentNo, HttpSession session) {
+        session.setAttribute("postCommentNo", postCommentNo);
+        return "/index/modifyComment";
     }
 }
